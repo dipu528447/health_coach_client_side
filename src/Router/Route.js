@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
           }, 
         },
         {
-          path: "/showall",
+          path: "/services",
           element: <Home/>,
           loader:  async () => {
             return fetch('http://localhost:5000/showall');
