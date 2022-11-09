@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import 'tw-elements';
 const Home = () => {
+    const services=useLoaderData();
+    function showall(){
+        document.getElementById('btnshow').classList.add('hidden')
+        document.getElementById('serviceDefault').classList.remove('grid-rows-1');
+        document.getElementById('serviceDefault').classList.add('grid-rows-2');
+    }
     return (
         <div>
             {/* <div id="carouselExampleCaptions" className="carousel slide relative" data-bs-ride="carousel">
@@ -80,6 +87,34 @@ const Home = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
                 </div> */}
+                <div className="container mx-auto my-10 grid grid-rows-1 gap-4 grid-flow-col flex justify-content-between" id="serviceDefault">
+                {services.map((service)=>{
+                    return (
+                        
+                            <div className="rounded-lg shadow-lg bg-white max-w-sm" >
+                                <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
+                                <img className="rounded-t-lg w-full h-2/3" src={service.service_image}  alt=""/>
+                                </a>
+                                <div className="p-6">
+                                <h5 className="text-gray-900 text-xl font-medium mb-2">{service.service_name}</h5>
+                                
+                                <button type="button" className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Show Details</button>
+                                </div>
+                            </div>       
+                    );
+                })}
+                </div>
+                <Link to='/showAll'>
+                    <button
+                        type="button"
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="light"
+                        className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                        id="btnshow"
+                        onClick={showall}
+                    >See All</button>
+                </Link>
+                
         </div>
     );
 };
