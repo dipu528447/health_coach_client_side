@@ -9,7 +9,7 @@ const ServiceDetails = () => {
     const [user,setUser]=useContext(UserContext);
     
     const navigate=useNavigate();
-    const location=useLocation();
+    
     const review=()=>{
         console.log(user);
         if(user && user.uid){

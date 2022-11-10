@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, ProviderId, signInWithEmailAndPassword } from "firebase/auth";
 import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -14,6 +14,10 @@ const location=useLocation();
 const from=location.state?.from?.pathname||'/';
 const [msg,setMsg]=useState('');
 const navigate=useNavigate();
+useEffect(()=>{
+    if(user)
+        navigate(from,{replace:true})
+},[user])
 function validation(){
     if(!email){
         setMsg("please enter your email");
@@ -36,9 +40,8 @@ function emailLogin(event){
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed in 
-        const user = userCredential.user;
-        console.log(user)
-        setUser(user);
+        const newuser = userCredential.user;
+        setUser(newuser);
         navigate(from,{replace:true})
         // ...
     })
@@ -59,10 +62,12 @@ function googleLogin(event){
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         // The signed-in user info.
-        const user = result.user;
-        setUser(user)
-        console.log(user)
+        console.log(result.user)
+        
+        
+        setUser(result.user);
         navigate(from,{replace:true})
+        
         // ...
     }).catch((error) => {
         // Handle Errors here.
