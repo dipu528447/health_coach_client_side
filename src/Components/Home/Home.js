@@ -3,6 +3,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import 'tw-elements';
+import MyTeam from '../MyTeam/MyTeam';
+import Gallery from '../Gallery/Gallery';
 
 const Home = () => {
     const services=useLoaderData();
@@ -94,7 +96,7 @@ const Home = () => {
                     <div className="text-center md:max-w-xl lg:max-w-3xl mx-auto my-10">
                         <h3 className="text-7xl font-bold mb-6 text-gray-800">Services</h3>
                     </div>
-                    <div className=" my-10 grid grid-rows-1 gap-4 grid-flow-col flex justify-content-between" id="serviceDefault">
+                    <div className=" my-10 grid grid-rows-1 gap-4 lg:grid-flow-col xs:grid-flow-row flex justify-content-between" id="serviceDefault">
                     {services.map((service)=>{
                         return (
                             
@@ -126,6 +128,10 @@ const Home = () => {
                             onClick={showall}
                         >See All</button>
                     </Link>
+                </div>
+                <div className='mt-12 container mx-auto'>
+                    <Gallery></Gallery>
+                    <MyTeam></MyTeam>
                 </div>
                 
         </div>

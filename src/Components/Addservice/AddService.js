@@ -11,6 +11,7 @@ const AddService = () => {
         event.preventDefault();
         console.log(user);
         if(user && user.uid){
+            // new service which need to push in server
             const newService={
                 service_name:document.getElementById('name').value,
                 service_image: document.getElementById('service_image').value,
@@ -19,7 +20,7 @@ const AddService = () => {
             }
             
             console.log(newService)
-            fetch('http://localhost:5000/addService', {
+            fetch('https://doctor-service-server-khaki.vercel.app/addService', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -44,7 +45,7 @@ const AddService = () => {
     }
     return (
         <div >
-            <div className="block p-6 w-1/2 rounded-lg shadow-lg bg-white container mx-auto">
+            <div className="block p-6 w-1/2 rounded-lg shadow-lg bg-white container mx-auto mt-28">
                 <form onSubmit={(event)=>review(event)}>
                     <div className="form-group mb-6">
                         <input type="text" className="form-control block

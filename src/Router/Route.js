@@ -20,14 +20,14 @@ export const router = createBrowserRouter([
           path: "/",
           element: <Home/>,
           loader:  async () => {
-            return fetch('http://localhost:5000');
+            return fetch('https://doctor-service-server-khaki.vercel.app');
           }, 
         },
         {
           path: "/services",
           element: <Home/>,
           loader:  async () => {
-            return fetch('http://localhost:5000/showall');
+            return fetch('https://doctor-service-server-khaki.vercel.app/showall');
           }, 
         },
         {
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
           element: <ServiceDetails/>,
           loader:  async ({params}) => 
       
-            fetch(`http://localhost:5000/services/${params.id}`) 
+            fetch(`https://doctor-service-server-khaki.vercel.app/services/${params.id}`) 
         },
         {
             path: "/blogs",

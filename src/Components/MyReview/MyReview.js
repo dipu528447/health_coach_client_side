@@ -7,8 +7,10 @@ const MyReview = () => {
     const [reviews,setReviews]=useState([]);
     const navigation=useNavigate();
     useEffect(()=>{
+
+        // load all review in start
         console.log(user)
-        fetch(`http://localhost:5000/myreviews/${user.email}`)
+        fetch(`https://doctor-service-server-khaki.vercel.app/myreviews/${user.email}`)
         .then(res=>res.json())
         .then(data=>setReviews(data));
     },[])
@@ -43,7 +45,7 @@ const MyReview = () => {
                                             const confirm = window.confirm('Do you want to delete this review');
                                             
                                             if(confirm){
-                                                fetch(`http://localhost:5000/deletereview/${review._id}`, {
+                                                fetch(`https://doctor-service-server-khaki.vercel.app/deletereview/${review._id}`, {
                                                     method: 'DELETE'
                                                 })
                                                 .then(res => res.json())

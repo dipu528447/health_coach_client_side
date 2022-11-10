@@ -23,7 +23,7 @@ const ServiceDetails = () => {
             }
             
             console.log(newMyReview)
-            fetch('http://localhost:5000/review', {
+            fetch('https://doctor-service-server-khaki.vercel.app/review', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
