@@ -61,6 +61,7 @@ function googleLogin(event){
         // The signed-in user info.
         const user = result.user;
         setUser(user)
+        console.log(user)
         navigate(from,{replace:true})
         // ...
     }).catch((error) => {

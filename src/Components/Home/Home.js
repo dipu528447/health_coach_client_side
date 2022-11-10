@@ -109,7 +109,7 @@ const Home = () => {
                                 <h5 className="text-gray-900 text-xl font-medium mb-2">{service.service_name}</h5>
                                 <p class="text-gray-700 text-left text-base mb-4">{service.details.substring(0,100)} <Link to={`/services/${service.service_id}`}><span className='text-blue-500'>Read more...</span></Link></p>
                                 <h5 className="text-gray-900 font-medium mb-2 text-left">Price: {service.service_price}</h5>
-                                <Link to={`/services/${service.service_id}`}><button type="button" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Show Details</button></Link>
+                                <Link to={`/services/${service._id}`}><button type="button" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Show Details</button></Link>
                                 </div>
                             </div>       
                     );
