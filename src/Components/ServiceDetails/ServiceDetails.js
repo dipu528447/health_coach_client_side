@@ -18,6 +18,7 @@ const ServiceDetails = () => {
                 email: user.email,
                 profile_photo: user.profile_photo?user.profile_photo:"https://images.unsplash.com/photo-1614680376739-414d95ff43df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
                 service_id:services._id,
+                service_name:services.service_name,
                 profile_name:user.displayName?user.displayName:user.email
             }
             
@@ -111,7 +112,7 @@ const ServiceDetails = () => {
                         
                     </div>
                     <div className="flex space-x-2 justify-center">
-                        <button type="button" onClick={review} id="comment" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
+                        <button type="button" onClick={review} id="comment" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Submit Review</button>
                     </div>
                 </div>
             </div>
