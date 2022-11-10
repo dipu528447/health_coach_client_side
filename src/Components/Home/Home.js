@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 import 'tw-elements';
 
 const Home = () => {
@@ -96,9 +98,13 @@ const Home = () => {
                     return (
                         
                             <div className="rounded-lg shadow-lg bg-white max-w-sm" >
-                                <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
-                                <img className="rounded-t-lg w-full h-1/2" src={service.service_image}  alt=""/>
-                                </a>
+                                
+                                <PhotoProvider>
+                                    <PhotoView src={service.service_image} >
+                                        <img className="rounded-t-lg w-full h-1/2" src={service.service_image}  alt=""/>
+                                    </PhotoView>
+                                    </PhotoProvider>
+                                
                                 <div className="p-6">
                                 <h5 className="text-gray-900 text-xl font-medium mb-2">{service.service_name}</h5>
                                 <p class="text-gray-700 text-left text-base mb-4">{service.details.substring(0,100)} <Link to={`/services/${service.service_id}`}><span className='text-blue-500'>Read more...</span></Link></p>
