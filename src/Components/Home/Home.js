@@ -90,41 +90,43 @@ const Home = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
                 </div>
-                <div className="text-center md:max-w-xl lg:max-w-3xl mx-auto my-10">
-                    <h3 className="text-7xl font-bold mb-6 text-gray-800">Services</h3>
+                <div className='container mx-auto'>
+                    <div className="text-center md:max-w-xl lg:max-w-3xl mx-auto my-10">
+                        <h3 className="text-7xl font-bold mb-6 text-gray-800">Services</h3>
+                    </div>
+                    <div className=" my-10 grid grid-rows-1 gap-4 grid-flow-col flex justify-content-between" id="serviceDefault">
+                    {services.map((service)=>{
+                        return (
+                            
+                                <div className="rounded-lg shadow-lg bg-white max-w-sm" key={service._id}>
+                                    
+                                    <PhotoProvider>
+                                        <PhotoView src={service.service_image} >
+                                            <img className="rounded-t-lg w-full h-1/2" src={service.service_image}  alt=""/>
+                                        </PhotoView>
+                                        </PhotoProvider>
+                                    
+                                    <div className="p-6">
+                                    <h5 className="text-gray-900 text-xl font-medium mb-2">{service.service_name}</h5>
+                                    <p className="text-gray-700 text-left text-base mb-4">{service.details.substring(0,100)} ...</p>
+                                    <h5 className="text-gray-900 font-medium mb-2 text-left">Price: {service.service_price}</h5>
+                                    <Link to={`/services/${service._id}`}><button type="button" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Show Details</button></Link>
+                                    </div>
+                                </div>       
+                        );
+                    })}
+                    </div>
+                    <Link to='/services'>
+                        <button
+                            type="button"
+                            data-mdb-ripple="true"
+                            data-mdb-ripple-color="light"
+                            className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                            id="btnshow"
+                            onClick={showall}
+                        >See All</button>
+                    </Link>
                 </div>
-                <div className="container mx-auto my-10 grid grid-rows-1 gap-4 grid-flow-col flex justify-content-between" id="serviceDefault">
-                {services.map((service)=>{
-                    return (
-                        
-                            <div className="rounded-lg shadow-lg bg-white max-w-sm" key={service._id}>
-                                
-                                <PhotoProvider>
-                                    <PhotoView src={service.service_image} >
-                                        <img className="rounded-t-lg w-full h-1/2" src={service.service_image}  alt=""/>
-                                    </PhotoView>
-                                    </PhotoProvider>
-                                
-                                <div className="p-6">
-                                <h5 className="text-gray-900 text-xl font-medium mb-2">{service.service_name}</h5>
-                                <p className="text-gray-700 text-left text-base mb-4">{service.details.substring(0,100)} ...</p>
-                                <h5 className="text-gray-900 font-medium mb-2 text-left">Price: {service.service_price}</h5>
-                                <Link to={`/services/${service._id}`}><button type="button" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Show Details</button></Link>
-                                </div>
-                            </div>       
-                    );
-                })}
-                </div>
-                <Link to='/services'>
-                    <button
-                        type="button"
-                        data-mdb-ripple="true"
-                        data-mdb-ripple-color="light"
-                        className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                        id="btnshow"
-                        onClick={showall}
-                    >See All</button>
-                </Link>
                 
         </div>
     );
