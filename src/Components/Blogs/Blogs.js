@@ -6,12 +6,12 @@ const Blogs = () => {
             
             <div className="p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700">
             <h2 className="font-semibold text-3xl mb-5 text-left">Blog 1: Difference between SQL and NoSQL</h2>
-                <h1 className='text-left'>SQL</h1>
+                <h1 className='text-left text=xl'>SQL</h1>
                 <p className='text-left'>RELATIONAL DATABASE MANAGEMENT SYSTEM (RDBMS). These databases have fixed or static or predefined schema. These databases are not suited for hierarchical data storage.
                 These databases are best suited for complex queries.It is vertically Scalable and follows ACID property. Examples: MySQL, PostgreSQL, Oracle, MS-SQL Server etc.
                 </p>
                 <hr className="my-6 border-gray-300" />
-                <h1 className='text-left'>NoSQL</h1>
+                <h1 className='text-left text=xl'>NoSQL</h1>
                 <p className='text-left'>Non-relational or distributed database system. They have dynamic schema. These databases are best suited for hierarchical data storage.
                 These databases are not so good for complex queries. It is horizontally Scalable and follows CAP property. Examples: MongoDB, GraphQL, HBase, Neo4j, Cassandra etc
                 </p>
@@ -31,6 +31,26 @@ const Blogs = () => {
                     <li>Resource server then verifies the authenticity of the token using the secret salt/ public key.</li>
                 </ul>
                 <hr className="my-6 border-gray-300" />
+                
+            </div>
+
+            <div className="p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700">
+            <h2 className="font-semibold text-3xl mb-5 text-left">Blog 3: What is the difference between javascript and NodeJS?</h2>
+                <h1 className='text-left text-xl'>javascript</h1>
+                <p className='text-left'>Javascript is a Scripting language. It is mostly abbreviated as JS. It can be said that Javascript is the updated version of the ECMA script. Javascript is a high-level programming language that uses the concept of Oops but it is based on prototype inheritance.
+                </p>
+                <hr className="my-6 border-gray-300" />
+                <h1 className='text-left text-xl'>NodeJS</h1>
+                <p className='text-left'>NodeJS is a cross-platform and opensource Javascript runtime environment that allows the javascript to be run on the server-side. Nodejs allows Javascript code to run outside the browser. Nodejs comes with a lot of modules and mostly used in web development. 
+                </p>
+            </div>
+            <hr className="my-6 border-gray-300" />
+            <div className="p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700">
+            <h2 className="font-semibold text-3xl mb-5 text-left">Blog 4: How does NodeJS handle multiple requests at the same time?</h2>
+                
+                <p className='text-left'>
+                    NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them. EventLoop is the listener for the EventQueue. If NodeJS can process the request without I/O blocking then the event loop would itself process the request and sends the response back to the client by itself. But, it is possible to process multiple requests parallelly using the NodeJS cluster module or worker_threads module
+                </p>
                 
             </div>
         </div>
