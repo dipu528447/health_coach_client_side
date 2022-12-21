@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
@@ -9,12 +9,27 @@ import Gallery from '../Gallery/Gallery';
 const Home = () => {
     const services=useLoaderData();
     function showall(){
+       
         document.getElementById('btnshow').classList.add('hidden')
         document.getElementById('serviceDefault').classList.remove('grid-rows-1');
         document.getElementById('serviceDefault').classList.add('grid-rows-2');
     }
+    const [loading,setLoading]=useState(true);
+    useEffect(()=>{
+        setTimeout(async() => {
+            setLoading(false);
+        }, 3000);
+    },[loading])
     return (
         <div>
+            {loading?
+            <>
+            <div className="flex justify-center items-center my-5">
+                <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            </>:<>
             <div id="carouselExampleCaptions" className="carousel slide relative" data-bs-ride="carousel">
                 <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                     <button
@@ -123,6 +138,8 @@ const Home = () => {
                     <Gallery></Gallery>
                     <MyTeam></MyTeam>
                 </div>
+            </>}
+            
                 
         </div>
     );

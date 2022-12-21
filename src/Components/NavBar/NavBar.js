@@ -1,5 +1,5 @@
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoadingContext, UserContext } from '../../App';
 import { app } from '../../firebase';
@@ -9,6 +9,7 @@ const NavBar = () => {
     const navigate=useNavigate();
     const [user,setUser]=useContext(UserContext);
     const [loading,setLoading]=useContext(LoadingContext);
+    const [isOpen,setIsOpen]=useState(false);
     useEffect(()=>{
         const unsub=onAuthStateChanged(auth,currentUser=>{
             setUser(currentUser);
@@ -39,12 +40,12 @@ const NavBar = () => {
 
                             
                             <div className="flex lg:hidden">
-                                <button type="button" className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
-                                    <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                <button type="button" className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu" onClick={()=>setIsOpen(!isOpen)}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 h-6 ${isOpen?"hidden":"show"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
                                     </svg>
                             
-                                    <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 h-6 ${isOpen?"show":"hidden"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
@@ -52,7 +53,7 @@ const NavBar = () => {
                         </div>
 
                         
-                        <div className="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
+                        <div className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center ${isOpen?"show":"hidden"} lg:show`}>
                             <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
                                 <Link to="/" className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Home</Link>
                                 <Link to="/blogs" className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Blogs</Link>
